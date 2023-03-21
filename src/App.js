@@ -1,24 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import FunctionalCompo from './FunctionalCompo';
+import { useState } from 'react';
+import ClassCompo from './ClassCompo';
 
 function App() {
+  const [numone,setFirst] = useState(false)
+  const [numtwo,setTwo] = useState(false)
+  const FirstFunc = ()=>{
+    setFirst(!numone)
+  }
+  const SecFunc = () => {
+    setTwo(!numtwo)
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 className='h1' > Styling using functional and class component</h1>
+      <div className='div1'>
+        <button onClick={FirstFunc} className='btn'>To see styling in functional component</button>
+        <button onClick={SecFunc} className='btn'>To see styling in class component</button>
+      </div>
+      <div className='div2'>
+        {numone ? <FunctionalCompo/>:null}
+        {numtwo ? <ClassCompo/>:null}
+      </div>
     </div>
+    
   );
 }
 
